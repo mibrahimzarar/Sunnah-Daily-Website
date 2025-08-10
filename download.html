@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Sunnah Daily</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-gold: #f59e0b;
+            --deep-blue: #0f172a;
+            --light-blue: #dbeafe;
+            --white: #ffffff;
+            --gray-100: #f8fafc;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-600: #475569;
+            --gray-800: #1e293b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--primary-blue) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--secondary-blue));
+            border-radius: 2px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.1s both;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-gold);
+        }
+        
+        .logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        
+        .header h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .header p {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: var(--gray-300);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav a:hover::before {
+            left: 100%;
+        }
+        
+        .nav a:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav a.active {
+            background: var(--accent-gold);
+            color: var(--deep-blue);
+            font-weight: 600;
+        }
+        
+        /* Content Sections */
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .content h2 {
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--secondary-blue));
+            border-radius: 2px;
+        }
+        
+        .content h3 {
+            color: var(--secondary-blue);
+            margin: 32px 0 16px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .content h3 i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+        
+        .content h4 {
+            color: var(--primary-blue);
+            margin: 24px 0 12px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .content h4 i {
+            color: var(--accent-gold);
+            font-size: 1rem;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .content ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        .content li {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .content strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        /* Download Buttons */
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
+            border: 1px solid var(--gray-200);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--secondary-blue));
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-blue);
+        }
+        
+        .download-btn i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .download-btn h4 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .download-btn p {
+            color: var(--gray-600);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* QR Code Section */
+        .qr-section {
+            background: var(--gray-100);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        
+        .qr-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .qr-section h3 i {
+            color: var(--accent-gold);
+        }
+        
+        .qr-code-container {
+             display: flex;
+             justify-content: center;
+             margin: 0 auto 16px;
+         }
+         
+         .qr-code-image {
+             width: 200px;
+             height: 200px;
+             border: 2px solid var(--gray-300);
+             border-radius: 12px;
+             background: var(--white);
+             padding: 8px;
+             box-shadow: var(--shadow-md);
+             transition: all 0.3s ease;
+         }
+         
+         .qr-code-image:hover {
+             transform: scale(1.05);
+             box-shadow: var(--shadow-lg);
+             border-color: var(--secondary-blue);
+         }
+        
+        /* Contact Info */
+        .contact-info {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+            border-radius: 20px;
+            padding: 32px;
+            margin: 32px 0;
+            border-left: 6px solid var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .contact-info h3 i {
+            color: var(--accent-gold);
+        }
+        
+        .contact-info a {
+            color: var(--secondary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Test Button */
+        .test-redirect {
+            text-align: center;
+            margin: 24px 0;
+        }
+        
+        .test-btn {
+            background: var(--accent-gold);
+            color: var(--deep-blue);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .test-btn:hover {
+            background: #d97706;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: var(--gray-300);
+            margin-top: 60px;
+            padding: 32px 0;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .header {
+                padding: 40px 0 30px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+            
+            .nav a {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .content {
+                padding: 32px 24px;
+                margin-bottom: 24px;
+            }
+            
+            .download-buttons {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-btn {
+                padding: 24px 20px;
+            }
+            
+            .contact-info {
+                padding: 24px 20px;
+            }
+            
+            .qr-section {
+                padding: 20px;
+            }
+            
+            .qr-code-image {
+                 width: 150px;
+                 height: 150px;
+                 padding: 6px;
+             }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .content {
+                padding: 24px 20px;
+            }
+            
+            .download-btn {
+                padding: 20px 16px;
+            }
+            
+            .qr-code-image {
+                 width: 120px;
+                 height: 120px;
+                 padding: 4px;
+             }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="Logo.jpeg" alt="Sunnah Daily Logo">
+            </div>
+            <h1>Sunnah Daily</h1>
+            <p>Download & Install</p>
+        </div>
+        
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <a href="download.html" class="active">Download</a>
+        </nav>
+        
+        <div class="content">
+            <h2>Download Sunnah Daily</h2>
+            <p>Get Sunnah Daily on your device and start your journey toward a more mindful and spiritually fulfilling daily routine.</p>
+            
+            <h3><i class="fas fa-download"></i> Available Platforms</h3>
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" class="download-btn">
+                    <i class="fab fa-google-play"></i>
+                    <h4>Google Play Store</h4>
+                    <p>Available for Android devices<br>Android 6.0 (API level 23) or later</p>
+                </a>
+                
+                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="download-btn">
+                    <i class="fab fa-apple"></i>
+                    <h4>iOS App Store</h4>
+                    <p>Available for iPhone and iPad<br>iOS 13.0 or later</p>
+                </a>
+                
+                <a href="index.html" class="download-btn">
+                    <i class="fas fa-globe"></i>
+                    <h4>Web Version</h4>
+                    <p>Access features through our website<br>Works on all modern browsers</p>
+                </a>
+            </div>
+            
+            <div class="qr-section">
+                 <h3><i class="fas fa-qrcode"></i> QR Code for Smart Redirect</h3>
+                 <div class="qr-code-container">
+                     <img src="qr-code.jpg" alt="QR Code for App Download" class="qr-code-image">
+                 </div>
+                 <p style="color: var(--gray-600); font-size: 0.9rem;">
+                     Scan with your phone to be automatically redirected to the right app store
+                 </p>
+                
+                <div class="test-redirect">
+                    <a href="app-redirect.php" class="test-btn">
+                        <i class="fas fa-mobile-alt"></i> Test Smart Redirect
+                    </a>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-cog"></i> System Requirements</h3>
+            <ul>
+                <li><strong>iOS:</strong> iOS 13.0 or later, compatible with iPhone and iPad</li>
+                <li><strong>Android:</strong> Android 6.0 (API level 23) or later</li>
+                <li><strong>Storage:</strong> 25MB available space</li>
+                <li><strong>Permissions:</strong> Location access for accurate prayer times</li>
+                <li><strong>Internet:</strong> Required for initial setup and content updates</li>
+            </ul>
+            
+            <h3><i class="fas fa-rocket"></i> How the Smart Redirect Works</h3>
+            <p>Our smart redirect system automatically detects your device type and redirects you to the appropriate download location:</p>
+            <ul>
+                <li><strong>Android devices</strong> → Google Play Store</li>
+                <li><strong>iOS devices (iPhone/iPad)</strong> → Apple App Store</li>
+                <li><strong>Desktop/Other devices</strong> → Website version</li>
+            </ul>
+            
+            <div class="contact-info">
+                <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                <p>Having trouble downloading or installing the app? Our support team is here to help!</p>
+                <p><strong>Support Email:</strong> <a href="mailto:support@sunnahdaily.app">support@sunnahdaily.app</a></p>
+                <p><strong>Support Page:</strong> <a href="support.html">Visit Support Center</a></p>
+                <p><strong>Response Time:</strong> Within 24 hours</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Sunnah Daily. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

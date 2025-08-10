@@ -1,0 +1,32 @@
+Files Created:
+1. redirect.php
+Simple version of your original script with clean formatting
+Basic device detection for Android, iOS, and other devices
+2. app-redirect.php
+Enhanced version with better error handling and security
+More comprehensive device detection
+Fallback options if redirects fail
+Includes a backup HTML page if something goes wrong
+3. download.html
+Beautiful landing page that matches your website design
+Manual download buttons for all platforms
+QR code instructions
+Test button to try the redirect functionality
+How to Use:
+1.
+Replace the placeholder values in both PHP files:
+
+Replace YOUR_APP_ID with your actual Google Play Store app ID
+Replace YOUR_APP_ID with your actual Apple App Store app ID
+Replace https://yourwebsite.com with your actual website URL
+2.
+Generate QR Code pointing to: https://sunnah-daily-app.netlify.app/app-redirect.php
+
+3.
+Test the functionality by visiting the download page or using the redirect directly
+
+4.
+Go to QR Code Monkey and paste that link.
+
+5.
+Download your free QR code in PNG/SVG.
