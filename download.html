@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.png">
     <title>Download - Sunnah Daily</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -270,8 +271,9 @@
             border: 1px solid var(--gray-200);
             border-radius: 20px;
             padding: 32px 24px;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text inside */            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             text-decoration: none;
@@ -305,6 +307,9 @@
         .download-btn h4 {
             color: var(--primary-blue);
             margin-bottom: 12px;
+                align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text inside */
             font-size: 1.3rem;
             font-weight: 600;
         }
@@ -523,7 +528,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="Logo.jpeg" alt="Sunnah Daily Logo">
+                <img src="Logo.png" alt="Sunnah Daily Logo">
             </div>
             <h1>Sunnah Daily</h1>
             <p>Download & Install</p>
@@ -531,9 +536,9 @@
         
         <nav class="nav">
             <a href="index.html">Home</a>
+            <a href="download.html" class="active">Download</a>
             <a href="privacy.html">Privacy Policy</a>
             <a href="support.html">Support</a>
-            <a href="download.html" class="active">Download</a>
         </nav>
         
         <div class="content">
@@ -542,29 +547,24 @@
             
             <h3><i class="fas fa-download"></i> Available Platforms</h3>
             <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" class="download-btn">
+                <a href="https://play.google.com/store/apps/details?id=com.sunnahdaily.sunnahdaily9jr75at&pcampaignid=web_share" class="download-btn">
                     <i class="fab fa-google-play"></i>
                     <h4>Google Play Store</h4>
                     <p>Available for Android devices<br>Android 6.0 (API level 23) or later</p>
                 </a>
                 
-                <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="download-btn">
+                <a href="https://apps.apple.com/pk/app/sunnah-daily/id6748527320" class="download-btn">
                     <i class="fab fa-apple"></i>
                     <h4>iOS App Store</h4>
                     <p>Available for iPhone and iPad<br>iOS 13.0 or later</p>
                 </a>
                 
-                <a href="index.html" class="download-btn">
-                    <i class="fas fa-globe"></i>
-                    <h4>Web Version</h4>
-                    <p>Access features through our website<br>Works on all modern browsers</p>
-                </a>
             </div>
             
             <div class="qr-section">
                  <h3><i class="fas fa-qrcode"></i> QR Code for Smart Redirect</h3>
                  <div class="qr-code-container">
-                     <img src="qr-code.jpg" alt="QR Code for App Download" class="qr-code-image">
+                     <img src="sunnah-daily-qr-code.png" alt="QR Code for App Download" class="qr-code-image">
                  </div>
                  <p style="color: var(--gray-600); font-size: 0.9rem;">
                      Scan with your phone to be automatically redirected to the right app store

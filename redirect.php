@@ -9,7 +9,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 if (stripos($userAgent, 'Android') !== false) {
     // Redirect to Google Play Store
     // Replace YOUR_APP_ID with your actual Google Play Store app ID
-    header('Location: https://play.google.com/store/apps/details?id=YOUR_APP_ID');
+    header('Location: https://play.google.com/store/apps/details?id=com.sunnahdaily.sunnahdaily9jr75at&pcampaignid=web_share');
     exit;
 } 
 // Check for iOS devices (iPhone, iPad, iPod)
@@ -18,7 +18,7 @@ elseif (stripos($userAgent, 'iPhone') !== false ||
         stripos($userAgent, 'iPod') !== false) {
     // Redirect to Apple App Store
     // Replace YOUR_APP_ID with your actual Apple App Store app ID
-    header('Location: https://apps.apple.com/app/idYOUR_APP_ID');
+    header('Location: https://apps.apple.com/pk/app/sunnah-daily/id6748527320');
     exit;
 } 
 // For all other devices (desktop, other mobile platforms)

@@ -9,8 +9,8 @@
 
 // Configuration - Replace these with your actual app IDs and website URL
 $config = [
-    'android_app_id' => 'YOUR_APP_ID', // Replace with your Google Play Store app ID
-    'ios_app_id' => 'YOUR_APP_ID',     // Replace with your Apple App Store app ID
+    'android_app_id' => 'com.sunnahdaily.sunnahdaily9jr75at', // Replace with your Google Play Store app ID
+    'ios_app_id' => '6748527320',     // Replace with your Apple App Store app ID
     'website_url' => 'https://yourwebsite.com', // Replace with your website URL
     'fallback_url' => 'index.html'    // Local fallback if website URL fails
 ];
