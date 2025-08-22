@@ -1,31 +1,37 @@
 Files Created:
-1. redirect.php
-Simple version of your original script with clean formatting
-Basic device detection for Android, iOS, and other devices
-2. app-redirect.php
-Enhanced version with better error handling and security
-More comprehensive device detection
-Fallback options if redirects fail
-Includes a backup HTML page if something goes wrong
+1. netlify/functions/app-redirect.js
+Netlify Function that replaces PHP functionality
+Device detection for Android, iOS, and other devices
+Automatic redirects to appropriate app stores
+Fallback HTML page if redirects fail
+
+2. netlify.toml
+Netlify configuration file
+Sets up redirects from old PHP paths to new function
+Ensures backward compatibility
+
 3. download.html
 Beautiful landing page that matches your website design
 Manual download buttons for all platforms
 QR code instructions
-Test button to try the redirect functionality
-How to Use:
-1.
-Replace the placeholder values in both PHP files:
 
-Replace YOUR_APP_ID with your actual Google Play Store app ID
-Replace YOUR_APP_ID with your actual Apple App Store app ID
-Replace https://yourwebsite.com with your actual website URL
-2.
+4. Legacy PHP files (redirect.php, app-redirect.php)
+Kept for reference but replaced by Netlify Function
+
+How to Deploy:
+1. Push all files to your Git repository
+2. Netlify will automatically detect the netlify.toml file
+3. The function will be deployed automatically
+4. Test the redirect at: https://sunnah-daily-app.netlify.app/app-redirect.php
+
+QR Code Setup:
 Generate QR Code pointing to: https://sunnah-daily-app.netlify.app/app-redirect.php
 
-3.
-Test the functionality by visiting the download page or using the redirect directly
+The URL will now work correctly on Netlify and redirect users to:
+- Android users → Google Play Store
+- iOS users → Apple App Store  
+- Desktop users → Your website
 
-4.
 Go to QR Code Monkey and paste that link.
 
 5.

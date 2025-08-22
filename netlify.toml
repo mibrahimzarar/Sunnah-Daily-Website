@@ -1,0 +1,14 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/app-redirect.php"
+  to = "/.netlify/functions/app-redirect"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/redirect.php"
+  to = "/.netlify/functions/app-redirect"
+  status = 302
+  force = true
