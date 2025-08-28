@@ -36,3 +36,5 @@ Go to QR Code Monkey and paste that link.
 
 5.
 Download your free QR code in PNG/SVG.
+
+...
