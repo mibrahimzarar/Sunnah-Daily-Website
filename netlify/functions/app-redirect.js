@@ -6,8 +6,8 @@ exports.handler = async (event, context) => {
   const config = {
     android_app_id: 'com.sunnahdaily.sunnahdaily9jr75at',
     ios_app_id: '6748527320',
-    website_url: 'https://sunnah-daily-app.netlify.app',
-    fallback_url: 'https://sunnah-daily-app.netlify.app/index.html'
+    website_url: 'https://sunnah-way-app.netlify.app',
+    fallback_url: 'https://sunnah-way-app.netlify.app/index.html'
   };
   
   let redirectUrl;
@@ -48,7 +48,7 @@ exports.handler = async (event, context) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunnah Daily - App Redirect</title>
+    <title>Sunnah Way - App Redirect</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -96,7 +96,7 @@ exports.handler = async (event, context) => {
 </head>
 <body>
     <div class="container">
-        <h1>Sunnah Daily</h1>
+        <h1>Sunnah Way</h1>
         <p>Choose your platform to download the app:</p>
         <div class="buttons">
             <a href="https://play.google.com/store/apps/details?id=${config.android_app_id}&pcampaignid=web_share" class="btn">
