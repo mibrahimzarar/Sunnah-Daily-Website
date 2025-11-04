@@ -419,6 +419,51 @@
         .download-cta .download-btn i {
             font-size: 1.2rem;
         }
+
+        /* Store Button Group */
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+        .store-btn i {
+            font-size: 1.2rem;
+        }
+        .store-btn.google-play {
+            background: var(--accent-gold);
+            color: var(--deep-blue);
+            border-color: var(--accent-gold);
+        }
+        .store-btn.google-play:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        .store-btn.app-store {
+            background: var(--white);
+            color: var(--deep-blue);
+            border-color: var(--white);
+        }
+        .store-btn.app-store:hover {
+            background: transparent;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
         
         /* Footer */
         .footer {
@@ -500,6 +545,15 @@
             .download-cta {
                 padding: 32px 24px;
             }
+
+            .store-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .store-btn {
+                justify-content: center;
+            }
         }
         
         @media (max-width: 480px) {
@@ -537,11 +591,26 @@
         
         <nav class="nav">
             <a href="index.html" class="active">Home</a>
-            <a href="download.html">Download</a>
             <a href="privacy.html">Policy</a>
             <a href="terms.html">Terms</a>
+            <a href="pricing.html">Pricing</a>
             
         </nav>
+
+        <div class="download-cta">
+            <h2>Download Sunnah Way</h2>
+            <p>Install the app on your device. Smart redirect ensures the right store for you.</p>
+            <div class="store-buttons">
+                <a href="download.html" class="store-btn google-play">
+                    <i class="fab fa-google-play"></i>
+                    Get on Google Play
+                </a>
+                <a href="download.html" class="store-btn app-store">
+                    <i class="fab fa-apple"></i>
+                    Get on App Store
+                </a>
+            </div>
+        </div>
         
         <div class="content">
             <h2>Welcome to Sunnah Way</h2>
@@ -578,14 +647,7 @@
             </div>
         </div>
         
-        <div class="download-cta">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Download Sunnah Way and transform your daily Islamic practice with our comprehensive companion app.</p>
-            <a href="download.html" class="download-btn">
-                <i class="fas fa-download"></i>
-                Download App
-            </a>
-        </div>
+        
         
         <div class="footer">
             <p>&copy; 2025 Sunnah Way. All rights reserved.</p>

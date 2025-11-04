@@ -22,7 +22,7 @@ How to Deploy:
 1. Push all files to your Git repository
 2. Netlify will automatically detect the netlify.toml file
 3. The function will be deployed automatically
-4. Test the redirect at: https://sunnah-daily-app.netlify.app/app-redirect.php
+4. Test the redirect at: https://sunnah-way-app.netlify.app/app-redirect.php
 
 QR Code Setup:
 Generate QR Code pointing to: https://sunnah-daily-app.netlify.app/app-redirect.php
